@@ -1,6 +1,52 @@
 <mvc:View controllerName="projectexcel.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
+     displayBlock="true"
+  xmlns:u="sap.ui.unified"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+   
+ 
+
+ 
+  <Page id="page" title="Excel Upload">
+    <VBox class="sapUiSmallMargin">
+ 
+      <u:FileUploader
+        id="fileUploader"
+        name="excel"
+        change="onUpload"
+        buttonText="Upload Excel"
+        fileType="xlsx"
+        width="300px"
+        useMultipart="false"
+      />
+ 
+      <Table
+        id="idTable"
+        items="{excel>/}"
+        width="100%">
+        <columns>
+          <Column>
+            <Text text="Name" />
+          </Column>
+          <Column>
+            <Text text="Age" />
+          </Column>
+          <Column>
+            <Text text="Email" />
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem>
+            <cells>
+              <Text text="{excel>Name}" />
+              <Text text="{excel>Age}" />
+              <Text text="{excel>Email}" />
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+      
+    </VBox>
+  </Page>
+ 
 </mvc:View>
